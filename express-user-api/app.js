@@ -1,9 +1,10 @@
 const express = require("express");
+const cors=require("cors")
 const db = require("./database");
 const app = express();
 
 app.use(express.json());
-
+app.use(cors({ origin: "http://localhost:3000" }));
 // Seed the database with initial data
 const insert = db.prepare("INSERT INTO users (name, email) VALUES (?, ?)");
 insert.run("Alice", "alice@example.com");
